@@ -105,8 +105,8 @@ h1{
   padding: 30px;
 }
 .image{
-    width: 427px;
-    height:640px;
+    width: 640px;
+    height:870px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -120,5 +120,9 @@ h1{
 and (max-width : 768px) {
     h1{
         font-size: 100px;
+    }
+    .image{
+      width: 427px;
+      height:640px;
     }
 }
