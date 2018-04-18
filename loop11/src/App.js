@@ -65,28 +65,30 @@ runCall(){
         this.runCall()
     }
 
-  pickMelb(){
-    if(this.state.data.temp_c >= 18 && this.state.city ==='melbourne' || this.state.data.temp_f >= 65 && this.state.city ==='melbourne'){
-      return this.state.images.melbourne.summer
+  pickImage(city){
+    if(city === 'melbourne'){
+      if(this.state.data.temp_c >= 18 || this.state.data.temp_f >= 65){
+        return this.state.images.melbourne.summer
+      }
+      else{
+        return this.state.images.melbourne.winter
+      }
+    }
+    else if(city === 'brisbane'){
+      if(this.state.data.temp_c >= 18 || this.state.data.temp_f >= 65){
+        return this.state.images.brisbane.summer
+      }
+      else{
+        return this.state.images.brisbane.winter
+      }
     }
     else{
-      return this.state.images.melbourne.winter
-    }
-  }
-  pickBris(){
-    if(this.state.data.temp_c >= 18 && this.state.city ==='brisbane' || this.state.data.temp_f >= 65 && this.state.city ==='brisbane'){
-      return this.state.images.brisbane.summer
-    }
-    else{
-      return this.state.images.brisbane.winter
-    }
-  }
-  pickSyd(){
-    if(this.state.data.temp_c >= 18 && this.state.city ==='sydney' || this.state.data.temp_f >= 65 && this.state.city ==='sydney'){
-      return this.state.images.sydney.summer
-    }
-    else{
-      return this.state.images.sydney.winter
+        if(this.state.data.temp_c >= 18 || this.state.data.temp_f >= 65){
+          return this.state.images.sydney.summer
+        }
+        else{
+          return this.state.images.sydney.winter
+        }
     }
   }
   render() {
@@ -184,7 +186,8 @@ runCall(){
                   <Col sm={12} md={6} lg={6}>
                   <label>{`${this.state.city.toUpperCase()}, AUS`}</label>
                       <div className='imageCon'>
-                        <img className='image' src={this.state.city ==='melbourne' ? this.pickMelb() : this.state.city ==='sydney' ? this.pickSyd() : this.pickBris()}/>
+                       {/* <img className='image' src={this.state.city ==='melbourne' ? this.pickMelb() : this.state.city ==='sydney' ? this.pickSyd() : this.pickBris()}/>*/}
+                        <img className='image' src={this.pickImage(this.state.city)} />
                       </div>
                   </Col>
               </Row>
